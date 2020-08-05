@@ -1,0 +1,9 @@
+        - filter_chain_match:
+            server_names: [(${serverName})]
+            transport_protocol: tls
+          filters:
+            - name: envoy.tcp_proxy
+              typed_config:
+                "@type": type.googleapis.com/envoy.config.filter.network.tcp_proxy.v2.TcpProxy
+                stat_prefix: example_tcp
+                cluster: [(${clusterName})]

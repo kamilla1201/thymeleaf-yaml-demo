@@ -1,0 +1,14 @@
+    - name: [(${clusterName})]
+      connect_timeout: 1s
+      type: STRICT_DNS
+      dns_refresh_rate: 120s
+      dns_lookup_family: V4_ONLY
+      load_assignment:
+        cluster_name: [(${clusterName})]
+        endpoints:
+          - lb_endpoints:
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: [(${address})]
+                      port_value: [(${port})]
